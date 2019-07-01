@@ -10,7 +10,8 @@ import android.view.ViewGroup
 import com.sample.appointment.R
 import com.sample.appointment.service.UserManagementService
 import com.sample.appointment.views.MainActivity
-import kotlinx.android.synthetic.main.appointments_fragment.*
+import com.sample.appointment.views.create_user.CreateUserFragment
+import kotlinx.android.synthetic.main.users_fragment.*
 
 class UsersFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class UsersFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.appointments_fragment, container, false)
+            rootView = inflater.inflate(R.layout.users_fragment, container, false)
         } else container?.removeView(rootView)
         return rootView
     }
@@ -39,6 +40,9 @@ class UsersFragment : Fragment() {
         rvAppointments.adapter = adapter
         getAllInfo(true)
         srl.setOnRefreshListener { getAllInfo(false) }
+        btCreateNewUser.setOnClickListener {
+            (activity as MainActivity).push(CreateUserFragment(), true)
+        }
     }
 
     private fun getAllInfo(isShowProgress: Boolean) {

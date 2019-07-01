@@ -2,17 +2,28 @@ package com.sample.appointment.utils
 
 import android.app.AlertDialog
 import android.content.Context
-
-import java.util.ArrayList
+import android.view.KeyEvent
+import java.util.*
 
 object AlertUtils {
 
-    fun showMessage(mContext: Context, mMessage: String, iAlertMessageOkClick: IAlertMessageOkClick) {
+    fun showMessage(mContext: Context, mMessage: String, onAlertClick: () -> Unit) {
         val mAlertBuilder = AlertDialog.Builder(mContext)
         mAlertBuilder.setMessage(mMessage)
-        mAlertBuilder.setPositiveButton("OK") { dialog, which -> iAlertMessageOkClick.onOKClick() }
+        mAlertBuilder.setCancelable(false)
+        mAlertBuilder.setPositiveButton("OK") { dialog, _ ->
+            onAlertClick()
+            dialog.dismiss()
+        }
         //mAlertBuilder.setTitle(mTitle);
         mAlertBuilder.create().show()
+        mAlertBuilder.setOnKeyListener { dialog, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                onAlertClick()
+                dialog?.dismiss()
+            }
+            false
+        }
     }
 
     interface IAlertMessageOkClick {

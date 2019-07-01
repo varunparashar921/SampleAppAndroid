@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_margin="20dp"
+              android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etUserName"
+            android:maxLines="1"
+            android:lines="1"
+            android:hint="User Name"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/etJobName"
+            android:layout_marginTop="15dp"
+            android:hint="Job Name"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="textPersonName"
+            android:imeOptions="actionDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btCreateUser"
+            android:layout_marginTop="30dp"
+            android:text="CREATE USER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
